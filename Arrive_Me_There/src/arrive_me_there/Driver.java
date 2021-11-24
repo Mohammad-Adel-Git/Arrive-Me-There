@@ -5,8 +5,7 @@ import java.util.ArrayList;
 public class Driver {
 
     private UserPersonalInfo info;
-    private DB connection = DB::getInstance
-    ();
+    private DB connection = DB.getInstance();    
     private String drivingLicense;
     private String nationalID;
     private ArrayList<String> favouriteAreas;
@@ -22,12 +21,13 @@ public class Driver {
         this.nationalID = nationalID;
     }
 
-    public void addFavouriteArea(String area) {
-        favouriteAreas.add(area);
-    }
 
     public ArrayList<Ride> getRidesRequestsMatchedWithFavoriteArea(String area) {
-
+        ArrayList <Ride> rideList = new ArrayList<>();
+        for (Ride ride : connection.getRideList())
+            if (ride.getsource() == area)
+                rideList.add(ride);
+        return rideList;
     }
 
     public void addRate(Client client, RateValue rateValue) {
@@ -44,12 +44,8 @@ public class Driver {
         averageRate = sum / userRatings.size();
     }
 
-    public float getAverageRatings() {
-        return averageRate;
-    }
-
     public void suggestOffer(Ride ride) {
-
+        
     }
 
     public void notifyClientOwner() {
@@ -57,41 +53,68 @@ public class Driver {
     }
 
     public void addNotification(String notification) {
-        notificationList.add(nationalID);
+        notificationList.add(notification);
+
     }
 
+    public ArrayList<String> getNotificationList() {
+        return notificationList;
+    }
+
+    public void addFavouriteArea(String area) {
+        favouriteAreas.add(area);
+    }
+    
+    public ArrayList<String> getFavouriteArea() {
+        return favouriteAreas;
+    }
+    
     public void changeSuspendedState(boolean state) {
         isSuspended = state;
+    }
+    
+    public boolean getSuspendState() {
+        return isSuspended;
     }
 
     public void makeVerifyed() {
         isVerifyed = true;
     }
 
-    public void displayNotification() {
-        for (String notification : notificationList) {
-            System.out.println(notification + "\n" + "-------------------");
-        }
+    public boolean getVerifyState() {
+        return isVerifyed;
     }
+
     public ArrayList<Rate> getUserRatings() {
         return userRatings;
     }
 
+    public float getAverageRatings() {
+        return averageRate;
+    }
+    
+    ///////// Setters and getters for driver Info ////////////
+    public void setInfo(UserPersonalInfo info, String license, String nationalID){
+        this.info = info;
+        this.drivingLicense = license;
+        this.nationalID = nationalID;
+    }
+    
+    public UserPersonalInfo getInfo(){
+        return info;
+    }
+    
+    public void setDrivingLicense(String drivingLicense) {
+        this.drivingLicense = drivingLicense;
+    }
+    
     public String getDrivingLicense() {
         return drivingLicense;
     }
-
+    public void setNatinalID (String paramNationalID){
+        nationalID = paramNationalID;
+    }
     public String getNationalID() {
         return nationalID;
-    }
-    public boolean getSuspendState(){
-        return isSuspended;
-    }
-    public boolean getVerifyState(){
-        return isVerifyed;
-    }
-    
-    public ArrayList <String> getFavouriteArea(){
-        return favouriteAreas;
     }
 }
