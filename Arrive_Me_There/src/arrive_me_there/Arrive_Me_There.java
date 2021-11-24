@@ -23,49 +23,55 @@ public class Arrive_Me_There {
 
             switch (choice) {
                 case 1:
-                    System.out.println("enter your name");
+                    System.out.print("enter your name :");
                     String userName = input1.next();
-                    System.out.println("enter your password");
+                    System.out.print("enter your password :");
                     String password = input2.next();
-                    System.out.println("enter your email");
+                    System.out.print("enter your email :");
                     String email = input3.next();
-                    System.out.println("enter your phone number");
+                    System.out.print("enter your phone number :");
                     String phoneNumber = input4.next();
 
                     user.createUserInfoWithEmail(userName, password, email, phoneNumber);
                     admin.addNewAdmin(user);
                     break;
                 case 2:
-                    System.out.println("enter your name");
+                    System.out.print("enter your name :");
 
                     userName = input1.next();
-                    System.out.println("enter your password");
+                    System.out.print("enter your password :");
 
                     password = input2.next();
-                    System.out.println("enter your email");
+                    System.out.print("enter your email :");
 
                     email = input3.next();
-                    System.out.println("enter your phone number");
+                    System.out.print("enter your phone number :");
 
                     phoneNumber = input4.next();
-
+                    System.out.println("1- requset ride\n"
+                            + "2- offers \n"
+                            + "3- finish ride \n"
+                            + "4- logout");
                     user.createUserInfoWithEmail(userName, password, email, phoneNumber);
                     //client
                     break;
                 case 3:
-                    System.out.println("enter your name");
+                    System.out.print("enter your name :");
 
                     userName = input1.next();
-                    System.out.println("enter your password");
+                    System.out.print("enter your password :");
 
                     password = input2.next();
-                    System.out.println("enter your email");
+                    System.out.print("enter your email :");
 
                     email = input3.next();
-                    System.out.println("enter your phone number");
+                    System.out.print("enter your phone number :");
 
                     phoneNumber = input4.next();
-
+                    System.out.println("1- add favourite areas\n"
+                            + "2- available trips\n"
+                            + "3- show users rate\n"
+                            + "4- logout");
                     user.createUserInfoWithEmail(userName, password, email, phoneNumber);
                     //driver
                     break;
