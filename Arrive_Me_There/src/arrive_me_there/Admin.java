@@ -14,23 +14,24 @@ public class Admin {
         this.adminPersonalInfo = adminPersonalInfo;
     }
     
-    public void verify(Driver driver){
-        driver.makeVerifyed();
+    public boolean verify(Driver driver){
+        return driver.getVerifyState();
     }
     
     public void suspend(Driver driver){
         driver.changeSuspendedState(true);
     }
     
-    public ArrayList<Driver> listPendingDriver(){
-        ArrayList<Driver> listDrivers=new ArrayList<>();
-        listDrivers.add();//pass driver as parameter but from what
+    public ArrayList<Driver> getPendingDriver(){
+       DB dbDriver=DB.getInstance();
+       ArrayList<Driver> listDrivers=new ArrayList<>();
+       listDrivers= dbDriver.getDriverList();
         return listDrivers;
         
     }
     
     public void addNewAdmin(UserPersonalInfo personalInfo){
-        DataBase db=new DataBase();
+        DB db=DB.getInstance();
         db.addAdmin(this);
     }
     
