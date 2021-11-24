@@ -64,7 +64,7 @@ public class UserPersonalInfo {
 		
 	}
 	
-	public void UserInfoWithoutEmail(String userName,String mobileNumber,String password) {
+	public void createUserInfoWithoutEmail(String userName,String mobileNumber,String password) {
 		this.userName=userName;
 		this.mobileNumber=mobileNumber;
 		this.password=password;
