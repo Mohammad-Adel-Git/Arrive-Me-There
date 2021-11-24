@@ -1,18 +1,5 @@
 package arrive_me_there;
 
-enum RateValue {
-    Best(5), VeryGood(4), Good(3), Bad(2), Worst(1);
-    private int value;
-
-    private RateValue(int value) {
-        this.value = value;
-    }
-
-    public int getValue() {
-        return value;
-    }
-}
-
 public class Rate {
 
     private Client client;
@@ -31,11 +18,11 @@ public class Rate {
         return client;
     }
 
-    public void setRate(Rate rate) {
-        this.rateValue = rate;
+    public void setRate(RateValue paramRateValue) {
+        rateValue = paramRateValue;
     }
 
-    public RateValue getRate() {
+    public RateValue getRateValue() {
         return rateValue;
     }
 }

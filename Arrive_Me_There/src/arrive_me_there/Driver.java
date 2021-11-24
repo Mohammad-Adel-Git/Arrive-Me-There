@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class Driver {
 
     private UserPersonalInfo info;
+    private DB connection = DB::getInstance
+    ();
     private String drivingLicense;
     private String nationalID;
     private ArrayList<String> favouriteAreas;
@@ -12,7 +14,7 @@ public class Driver {
     private boolean isVerifyed = false;
     private ArrayList<Rate> userRatings;
     private float averageRate;
-    private String notification;
+    private ArrayList<String> notificationList;
 
     public Driver(UserPersonalInfo personalInfo, String drivingLicense, String nationalID) {
         info = personalInfo;
@@ -24,22 +26,22 @@ public class Driver {
         favouriteAreas.add(area);
     }
 
-    public ArrayList<Ride> listRidesRequestsMatchedWithFavoriteArea(String area) {
+    public ArrayList<Ride> getRidesRequestsMatchedWithFavoriteArea(String area) {
 
     }
 
-    public void listUserRatings() {
-        for (Rate rate : userRatings) {
-            System.out.println(rate);
-        }
-    }
-
-    public void addRate(RateValue rate, Client client) {
-
+    public void addRate(Client client, RateValue rateValue) {
+        Rate rate = new Rate(client, rateValue);
+        userRatings.add(rate);
+        evaluateAverageRate();
     }
 
     public void evaluateAverageRate() {
-
+        float sum = 0;
+        for (Rate rate : userRatings) {
+            sum += rate.getRateValue().getValue();
+        }
+        averageRate = sum / userRatings.size();
     }
 
     public float getAverageRatings() {
@@ -54,6 +56,10 @@ public class Driver {
 
     }
 
+    public void addNotification(String notification) {
+        notificationList.add(nationalID);
+    }
+
     public void changeSuspendedState(boolean state) {
         isSuspended = state;
     }
@@ -63,6 +69,29 @@ public class Driver {
     }
 
     public void displayNotification() {
+        for (String notification : notificationList) {
+            System.out.println(notification + "\n" + "-------------------");
+        }
+    }
+    public ArrayList<Rate> getUserRatings() {
+        return userRatings;
+    }
 
+    public String getDrivingLicense() {
+        return drivingLicense;
+    }
+
+    public String getNationalID() {
+        return nationalID;
+    }
+    public boolean getSuspendState(){
+        return isSuspended;
+    }
+    public boolean getVerifyState(){
+        return isVerifyed;
+    }
+    
+    public ArrayList <String> getFavouriteArea(){
+        return favouriteAreas;
     }
 }
