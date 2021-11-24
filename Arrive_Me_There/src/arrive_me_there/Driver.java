@@ -20,8 +20,7 @@ public class Driver {
         this.drivingLicense = drivingLicense;
         this.nationalID = nationalID;
     }
-
-
+    
     public ArrayList<Ride> getRidesRequestsMatchedWithFavoriteArea(String area) {
         ArrayList <Ride> rideList = new ArrayList<>();
         for (Ride ride : connection.getRideList())
@@ -30,8 +29,7 @@ public class Driver {
         return rideList;
     }
 
-    public void addRate(Client client, RateValue rateValue) {
-        Rate rate = new Rate(client, rateValue);
+    public void addRate(Rate rate) {        
         userRatings.add(rate);
         evaluateAverageRate();
     }
@@ -44,12 +42,17 @@ public class Driver {
         averageRate = sum / userRatings.size();
     }
 
-    public void suggestOffer(Ride ride) {
-        
+    public void suggestOffer(Ride ride, int price) {
+        Offer offer = new Offer(this, price);
+        ride.getOfferList().add(offer);
+        notifyClientOwner(ride.getClient(), price);
     }
 
-    public void notifyClientOwner() {
-
+    public void notifyClientOwner(Client client, int price) {
+        String notification = "A Driver" + this.getInfo().getUserName() + 
+                                "offers " + price + "for your ride" +
+                                "his phoneNumber: " + this.getInfo().getMobileNumber();
+        client.addNotification(notification);
     }
 
     public void addNotification(String notification) {
@@ -116,5 +119,10 @@ public class Driver {
     }
     public String getNationalID() {
         return nationalID;
+    }
+    @Override
+    public String toString(){
+        return info.toString();
+        
     }
 }

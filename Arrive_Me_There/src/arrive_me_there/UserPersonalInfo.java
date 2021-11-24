@@ -40,11 +40,11 @@ public class UserPersonalInfo {
 		this.password = password;
 	}
 	
-	private void  UserInfowithemail(String userName,String mobileNumber,String email,String password) {
-		this.userName=userName;
-		this.mobileNumber=mobileNumber;
-		this.email=email;
-		this.password=password;
+    private void UserInfowithemail(String userName, String mobileNumber, String email, String password) {
+        this.userName = userName;
+        this.mobileNumber = mobileNumber;
+        this.email = email;
+        this.password = password;
 		
 	}
 	
@@ -71,6 +71,13 @@ public class UserPersonalInfo {
         this.UserInfowithoutemail(userName, mobileNumber, password);
 		
 	}
+    @Override
+    public String toString() {
+        return "******* User Info **********" +
+                "\nUser Name: " + userName +
+                "\nmobile Number: " + mobileNumber + 
+                "\nemail " + email ;                
+    }
 	
 	
 	
