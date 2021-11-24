@@ -4,7 +4,7 @@ package arrive_me_there;
 import java.util.ArrayList;
 
 
-public class Client implements User {
+public class Client  {
 
     private DB connection = DB.getInstance();
 
@@ -14,12 +14,7 @@ public class Client implements User {
     private String Notification;
     private Rate rate;
     private ArrayList<String> notificationList;
-
-    @Override
-    public void logout() {
-
-    }
-
+        
     public Client(UserPersonalInfo PersonalInfo) {
 
         Info = PersonalInfo;

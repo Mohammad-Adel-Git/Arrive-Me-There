@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Arrive_Me_There {
 
     public static void main(String[] args) {
+        DB connection = DB.getInstance();
         System.out.println("Login For Initial Admin.");
 
         Scanner inp1 = new Scanner(System.in);
@@ -28,7 +29,7 @@ public class Arrive_Me_There {
         adminUser.createUserInfoWithEmail(userName1, password1, email1, phoneNumber1);
 
         Admin mainAdmin = new Admin(adminUser);
-
+        connection.addAdmin(mainAdmin);
         System.out.println("Login as 1-Add New Admin\n         2-Client\n         3-Driver\n         4-exit");
         UserPersonalInfo user = new UserPersonalInfo();
         Scanner input1 = new Scanner(System.in);

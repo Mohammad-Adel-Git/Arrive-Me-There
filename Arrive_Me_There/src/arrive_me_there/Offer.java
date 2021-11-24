@@ -1,8 +1,6 @@
 
 package arrive_me_there;
 
-import java.util.ArrayList;
-
 
 public class Offer {
     public Offer (Driver driver, int price){
