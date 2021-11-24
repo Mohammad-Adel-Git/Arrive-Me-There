@@ -24,13 +24,21 @@ public class Arrive_Me_There {
         String email1 = inp3.next();
         System.out.print("enter your phone number :");
         String phoneNumber1 = inp4.next();
+        UserPersonalInfo adminUser = new UserPersonalInfo();
+        adminUser.createUserInfoWithEmail(userName1, password1, email1, phoneNumber1);
+
+        Admin mainAdmin = new Admin(adminUser);
+
         System.out.println("Login as 1-Add New Admin\n         2-Client\n         3-Driver\n         4-exit");
         UserPersonalInfo user = new UserPersonalInfo();
         Scanner input1 = new Scanner(System.in);
         Scanner input2 = new Scanner(System.in);
         Scanner input3 = new Scanner(System.in);
         Scanner input4 = new Scanner(System.in);
+        Scanner input5 = new Scanner(System.in);
+        Scanner input6 = new Scanner(System.in);
         Scanner input = new Scanner(System.in);
+        
         int choice = input.nextInt();
         while (true) {
 
@@ -62,6 +70,7 @@ public class Arrive_Me_There {
                             + "3- finish ride \n"
                             + "4- logout");
                     user.createUserInfoWithEmail(userName, password, email, phoneNumber);
+                    Client client1=new Client(user);
                     break;
                 case 3://driver
                     System.out.print("enter your name :");
@@ -72,6 +81,11 @@ public class Arrive_Me_There {
                     email = input3.next();
                     System.out.print("enter your phone number :");
                     phoneNumber = input4.next();
+                    System.out.print("enter your phone number :");
+                    String drivingLicense = input5.next();
+                    System.out.print("enter your phone number :");
+                    String nationalID = input6.next();
+                    Driver driver1=new Driver(user, drivingLicense, nationalID);
                     System.out.println("1- add favourite areas\n"
                             + "2- available trips\n"
                             + "3- show users rate\n"
