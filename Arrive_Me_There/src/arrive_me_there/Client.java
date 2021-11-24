@@ -1,4 +1,4 @@
-/
+
 package arrive_me_there;
 
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class Client implements User {
         Info = PersonalInfo;
     }
     
-    public UserPersonalInfo getinfo() {
+    public UserPersonalInfo getInfo() {
         return Info;
     }
 
@@ -38,9 +38,9 @@ public class Client implements User {
         for (Driver driver : connection.getDriverList()){
             for (String area : driver.getFavouriteArea()){
                 if (area.equalsIgnoreCase(ride.getsource()));
-                String notification = "A Client called" + ride.getClient().getinfo().getUserName() +
+                String notification = "A Client called" + ride.getClient().getInfo().getUserName() +
                                         "requests Ride from " + ride.getsource() + "to " + ride.getdestination()+
-                                        "and his phoneNumber: " + ride.getClient().getinfo().getMobileNumber();
+                                        "and his phoneNumber: " + ride.getClient().getInfo().getMobileNumber();
                 driver.addNotification(notification);
             }
         }

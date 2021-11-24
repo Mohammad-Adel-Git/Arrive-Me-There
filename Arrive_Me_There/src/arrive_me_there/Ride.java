@@ -43,11 +43,11 @@ public class Ride {
         return offerList;
     }
 
-    public void setid(int id) {
+    public void setID(int id) {
         this.id = id;
     }
 
-    public int getid() {
+    public int getID() {
         return id;
     }
 

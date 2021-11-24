@@ -79,7 +79,7 @@ public class DB {
     public Driver getDriver(String mobileNumber) {
 
         for (int i = 0; i < driverList.size(); i++) {
-            if (mobileNumber.equals(driverList.get(i).getinfo().getMobileNumber())) {
+            if (mobileNumber.equals(driverList.get(i).getInfo().getMobileNumber())) {
                 return driverList.get(i);
             }
         }
@@ -96,7 +96,7 @@ public class DB {
     
     public Ride getRide (int id){
         for (Ride ride : rideList){
-            if (ride.getID == id)
+            if (ride.getID() == id)
                 return ride;
         }
         return null;

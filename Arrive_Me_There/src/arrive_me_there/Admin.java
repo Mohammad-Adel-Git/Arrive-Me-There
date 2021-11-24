@@ -39,4 +39,7 @@ public class Admin {
         return adminPersonalInfo.toString();
         
     }
+    public UserPersonalInfo getInfo(){
+        return adminPersonalInfo;
+    }
 }

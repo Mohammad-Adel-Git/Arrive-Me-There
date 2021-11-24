@@ -10,7 +10,7 @@ public class Rate {
         this.rateValue = rateValue;
     }
 
-    public void setClient(Clinet client) {
+    public void setClient(Client client) {
         this.client = client;
     }
 

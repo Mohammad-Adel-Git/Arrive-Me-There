@@ -23,7 +23,7 @@ public class Stranger {
 			UserPersonalInfo info = new UserPersonalInfo();
 			info.createUserInfoWithEmail(userName, mobileNumber, email, password);
 			Admin a1 = new Admin(info);
-			mydata.addClient(a1);
+			mydata.addAdmin(a1);
 			return true;
 		}
 
@@ -64,7 +64,7 @@ public class Stranger {
 			UserPersonalInfo info = new UserPersonalInfo();
 			info.createUserInfoWithoutEmail(userName, mobileNumber, password);
 			Admin a1 = new Admin(info);
-			mydata.addClient(a1);
+			mydata.addAdmin(a1);
 			return true;
 		}
 
@@ -96,7 +96,7 @@ public class Stranger {
 
 		} else if (type.equals("driver")) {
 			Driver d1 = mydata.getDriver(userName);
-			if (d1 != null && d1.getinfo().getPassword().equals(password))
+			if (d1 != null && d1.getInfo().getPassword().equals(password))
 				return true;
 
 		}
