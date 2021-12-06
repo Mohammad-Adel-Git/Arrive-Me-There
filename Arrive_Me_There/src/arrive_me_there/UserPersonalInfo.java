@@ -64,8 +64,8 @@ public class UserPersonalInfo {
     
     @Override
     public String toString() {
-        return "******* User Info **********"
-                + "\nUser Name: " + userName
+        return 
+                "\nUser Name: " + userName
                 + "\nmobile Number: " + mobileNumber
                 + "\nemail " + email;
     }

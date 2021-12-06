@@ -32,7 +32,7 @@ public class Admin {
 
     @Override
     public String toString() {
-        return "******* Client Info **********\n"
+        return "******* Admin Info **********\n"
                 + adminPersonalInfo.toString();
 
     }
