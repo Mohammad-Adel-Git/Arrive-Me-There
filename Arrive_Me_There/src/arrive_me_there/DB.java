@@ -57,7 +57,30 @@ public class DB {
     public ArrayList<Ride> getRideList() {
         return rideList;
     }
-
+    public Client checkClientExists(String userName, String password){
+        for (Client client: clientList)
+            if (userName.equals(client.getInfo().getUserName()) &&
+                    password.equals(client.getInfo().getPassword()))
+                return client;
+        return null;
+    }
+    public Driver checkDriverExists(String userName, String password){
+        for (Driver driver : driverList)
+            if (userName.equals(driver.getInfo().getUserName()) &&
+                    password.equals(driver.getInfo().getPassword()))
+                return driver;
+        return null;
+    }
+    
+    public Admin checkAdminExists(String userName, String password){
+        for (Admin admin : adminList)
+            if (userName.equals(admin.getInfo().getUserName()) &&
+                    password.equals(admin.getInfo().getPassword()))
+                return admin;
+        return null;
+        
+    }
+    
     public Client getClient(String mobileNumber) {
         for (int i = 0; i < clientList.size(); i++) {
             if (mobileNumber.equals(clientList.get(i).getInfo().getMobileNumber())) {
