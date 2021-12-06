@@ -57,13 +57,16 @@ public class Arrive_Me_There {
                             email = input1.next();
                             System.out.print("enter your phone number :");
                             phoneNumber = input1.next();
-                            System.out.println("1- requset ride\n"
-                                    + "2- offers \n"
-                                    + "3- finish ride \n"
-                                    + "4- logout");
                             UserPersonalInfo cl = UserPersonalInfo.createUserInfoWithEmail(userName, phoneNumber, email, password);
-                            guy.registerAsClient(cl);
-
+                            if (guy.registerAsClient(cl)){
+                                while (true){
+                                    System.out.println("1- requset ride\n"
+                                            + "2- offers \n"
+                                            + "3- finish ride \n"
+                                            + "4- logout");
+                                    String clientChoice = input1.next();
+                                }
+                            }
                             break;
                         case 2://driver
                             System.out.print("enter your name :");
@@ -78,12 +81,16 @@ public class Arrive_Me_There {
                             String drivingLicense = input1.next();
                             System.out.print("enter your phone number :");
                             String nationalID = input1.next();
-                            System.out.println("1- add favourite areas\n"
-                                    + "2- available trips\n"
-                                    + "3- show users rate\n"
-                                    + "4- logout");
                             UserPersonalInfo dr = UserPersonalInfo.createUserInfoWithEmail(userName, password, email, phoneNumber);
-                            guy.registerAsDriver(dr, drivingLicense, nationalID);
+                            if (guy.registerAsDriver(dr, drivingLicense, nationalID)){
+                                while(true){
+                                    System.out.println("1- add favourite areas\n"
+                                            + "2- available trips\n"
+                                            + "3- show users rate\n"
+                                            + "4- logout");
+                                    String driverChoice = input1.next();
+                                }
+                            }
 
                             break;
                         case 3:
