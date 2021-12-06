@@ -27,7 +27,8 @@ public class Admin {
 
     public void addNewAdmin(UserPersonalInfo personalInfo) {
         DB db = DB.getInstance();
-        db.addAdmin(this);
+        Admin admin=new Admin(personalInfo);
+        db.addAdmin(admin);
     }
 
     @Override

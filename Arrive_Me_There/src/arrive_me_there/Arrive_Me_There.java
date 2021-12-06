@@ -11,7 +11,7 @@ public class Arrive_Me_There {
 
     public static void main(String[] args) {
         DB connection = DB.getInstance();
-        Stranger guy=new Stranger();
+        Stranger guy = new Stranger();
         System.out.println("Login For Initial Admin.");
 
         Scanner inp1 = new Scanner(System.in);
@@ -31,72 +31,96 @@ public class Arrive_Me_There {
 
         Admin mainAdmin = new Admin(adminUser);
         connection.addAdmin(mainAdmin);
-        System.out.println("Login as 1-Add New Admin\n         2-Client\n         3-Driver\n         4-exit");
+        System.out.println("1-Register || 2-Login");
 //        UserPersonalInfo user = UserPersonalInfo.createUserInfoWithEmail(userName1, phoneNumber1, email1, password1);
         Scanner input1 = new Scanner(System.in);
-        Scanner input2 = new Scanner(System.in);
-        Scanner input3 = new Scanner(System.in);
-        Scanner input4 = new Scanner(System.in);
-        Scanner input5 = new Scanner(System.in);
-        Scanner input6 = new Scanner(System.in);
-        Scanner input = new Scanner(System.in);
-        
-        int choice = input.nextInt();
+        String userName = input1.next();
+        String password = input1.next();
+        String email = input1.next();
+        String phoneNumber = input1.next();
+        boolean isloggin = false;
+        int choice = input1.nextInt();
+        int choice2 = input1.nextInt();
         while (true) {
 
             switch (choice) {
-                case 1://admin
-                    System.out.print("enter your name :");
-                    String userName = input1.next();
-                    System.out.print("enter your password :");
-                    String password = input2.next();
-                    System.out.print("enter your email :");
-                    String email = input3.next();
-                    System.out.print("enter your phone number :");
-                    String phoneNumber = input4.next();
-                    UserPersonalInfo.createUserInfoWithEmail(userName, password, email, phoneNumber);
-                    //Admin admin = new Admin(user);
-                    //admin.addNewAdmin(user);
+                case 1:
+                    System.out.println("Register as 1-Client\n         2-Driver\n         3-exit");
+                    switch (choice2) {
+                        case 1://cleinr
+                            System.out.print("enter your name :");
+                            userName = input1.next();
+                            System.out.print("enter your password :");
+                            password = input1.next();
+                            System.out.print("enter your email :");
+                            email = input1.next();
+                            System.out.print("enter your phone number :");
+                            phoneNumber = input1.next();
+                            System.out.println("1- requset ride\n"
+                                    + "2- offers \n"
+                                    + "3- finish ride \n"
+                                    + "4- logout");
+                            UserPersonalInfo cl = UserPersonalInfo.createUserInfoWithEmail(userName, phoneNumber, email, password);
+                            guy.registerAsClient(cl);
+
+                            break;
+                        case 2://driver
+                            System.out.print("enter your name :");
+                            userName = input1.next();
+                            System.out.print("enter your password :");
+                            password = input1.next();
+                            System.out.print("enter your email :");
+                            email = input1.next();
+                            System.out.print("enter your phone number :");
+                            phoneNumber = input1.next();
+                            System.out.print("enter your phone number :");
+                            String drivingLicense = input1.next();
+                            System.out.print("enter your phone number :");
+                            String nationalID = input1.next();
+                            System.out.println("1- add favourite areas\n"
+                                    + "2- available trips\n"
+                                    + "3- show users rate\n"
+                                    + "4- logout");
+                            UserPersonalInfo dr = UserPersonalInfo.createUserInfoWithEmail(userName, password, email, phoneNumber);
+                            guy.registerAsDriver(dr, drivingLicense, nationalID);
+
+                            break;
+                        case 3:
+                            exit(0);
+                    }
+
                     break;
-                case 2://client
-                    System.out.print("enter your name :");
-                    userName = input1.next();
-                    System.out.print("enter your password :");
-                    password = input2.next();
-                    System.out.print("enter your email :");
-                    email = input3.next();
-                    System.out.print("enter your phone number :");
-                    phoneNumber = input4.next();
-                    System.out.println("1- requset ride\n"
-                            + "2- offers \n"
-                            + "3- finish ride \n"
-                            + "4- logout");
-                    UserPersonalInfo.createUserInfoWithEmail(userName, password, email, phoneNumber);
-                    //Client client1=new Client(user);
-                    //guy.registerAsClient(user);
+                case 2://login
+                    System.out.println("Login as 1-Client\n         2-Driver\n         3-Admin\n        4-exit");
+
+                    switch (choice2) {
+                        case 1://client
+                            System.out.print("enter your name :");
+                            userName = input1.next();
+                            System.out.print("enter your password :");
+                            password = input1.next();
+
+                            isloggin = guy.login(userName, password, "client");
+                            break;
+                        case 2://driver
+                            System.out.print("enter your name :");
+                            userName = input1.next();
+                            System.out.print("enter your password :");
+                            password = input1.next();
+
+                            isloggin = guy.login(userName, password, "driver");
+                            break;
+                        case 3://admin
+                            System.out.print("enter your name :");
+                            userName = input1.next();
+                            System.out.print("enter your password :");
+                            password = input1.next();
+
+                            isloggin = guy.login(userName, password, "admin");
+                            break;
+                    }
                     break;
-                case 3://driver
-                    System.out.print("enter your name :");
-                    userName = input1.next();
-                    System.out.print("enter your password :");
-                    password = input2.next();
-                    System.out.print("enter your email :");
-                    email = input3.next();
-                    System.out.print("enter your phone number :");
-                    phoneNumber = input4.next();
-                    System.out.print("enter your phone number :");
-                    String drivingLicense = input5.next();
-                    System.out.print("enter your phone number :");
-                    String nationalID = input6.next();
-                    Driver driver1=new Driver(UserPersonalInfo.createUserInfoWithEmail(userName, phoneNumber, email, password), drivingLicense, nationalID);
-                    System.out.println("1- add favourite areas\n"
-                            + "2- available trips\n"
-                            + "3- show users rate\n"
-                            + "4- logout");
-                    UserPersonalInfo.createUserInfoWithEmail(userName, password, email, phoneNumber);
-//                    guy.registerAsDriver(user, drivingLicense, nationalID);
-                    break;
-                case 4:
+                case 3:
                     exit(0);
 
             }
