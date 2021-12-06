@@ -6,7 +6,20 @@ public class UserPersonalInfo {
     private String mobileNumber;
     private String email;
     private String password;
-
+    
+    private UserPersonalInfo(String userName, String mobileNumber, String password){
+        this.userName = userName;
+        this.mobileNumber = mobileNumber;
+        this.password = password;
+    }
+    
+    private UserPersonalInfo (String userName, String mobileNumber, String email, String password){
+            this.userName = userName;
+            this.mobileNumber = mobileNumber;
+            this.email = email;
+            this.password = password;
+    }
+    
     public String getUserName() {
         return userName;
     }
@@ -39,38 +52,16 @@ public class UserPersonalInfo {
         this.password = password;
     }
 
-    private void UserInfowithemail(String userName, String mobileNumber, String email, String password) {
-        this.userName = userName;
-        this.mobileNumber = mobileNumber;
-        this.email = email;
-        this.password = password;
-
+    public static UserPersonalInfo createUserInfoWithEmail(String userName, String mobileNumber, String email, String password) {
+        UserPersonalInfo info = new UserPersonalInfo(userName, mobileNumber, password);
+        return info;
     }
 
-    private void UserInfowithoutemail(String userName, String mobileNumber, String password) {
-        this.userName = userName;
-        this.mobileNumber = mobileNumber;
-        this.password = password;
-
+    public static UserPersonalInfo createUserInfoWithoutEmail(String userName, String mobileNumber, String password) {
+        UserPersonalInfo info = new UserPersonalInfo(userName, mobileNumber, password);
+        return info;
     }
-
-    public void createUserInfoWithEmail(String userName, String mobileNumber, String email, String password) {
-        this.userName = userName;
-        this.mobileNumber = mobileNumber;
-        this.email = email;
-        this.password = password;
-        this.UserInfowithemail(userName, mobileNumber, email, password);
-
-    }
-
-    public void createUserInfoWithoutEmail(String userName, String mobileNumber, String password) {
-        this.userName = userName;
-        this.mobileNumber = mobileNumber;
-        this.password = password;
-        this.UserInfowithoutemail(userName, mobileNumber, password);
-
-    }
-
+    
     @Override
     public String toString() {
         return "******* User Info **********"
