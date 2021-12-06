@@ -40,12 +40,13 @@ public class Arrive_Me_There {
         String phoneNumber = input1.next();
         boolean isloggin = false;
         int choice = input1.nextInt();
-        int choice2 = input1.nextInt();
+        int choice2;
         while (true) {
 
             switch (choice) {
                 case 1:
                     System.out.println("Register as 1-Client\n         2-Driver\n         3-exit");
+                    choice2 = input1.nextInt();
                     switch (choice2) {
                         case 1://cleinr
                             System.out.print("enter your name :");
@@ -92,6 +93,7 @@ public class Arrive_Me_There {
                     break;
                 case 2://login
                     System.out.println("Login as 1-Client\n         2-Driver\n         3-Admin\n        4-exit");
+                    choice2 = input1.nextInt();
 
                     switch (choice2) {
                         case 1://client
