@@ -123,7 +123,10 @@ public class Driver {
     @Override
     public String toString(){
         return  "******* Driver Info **********\n" +
-                info.toString();
+                info.toString() + 
+                "\n driving license: " + drivingLicense + 
+                "\nnational id: " + nationalID;
+                
         
     }
 }
