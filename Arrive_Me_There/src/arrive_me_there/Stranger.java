@@ -6,73 +6,26 @@ public class Stranger {
 
     public boolean registerAsClient(UserPersonalInfo info) {
 
-        if (type.equals("client")) {
-            if (mobileNumber.equals(connection.getClient(mobileNumber))) {
-                return false;
-            }
-            UserPersonalInfo info = new UserPersonalInfo();
-            info.createUserInfoWithEmail(userName, mobileNumber, email, password);
-            Client c1 = new Client(info);
-            connection.addClient(c1);
-            return true;
-
-        } else if (type.equals("admin")) {
-            if (mobileNumber.equals(connection.getAdmin(mobileNumber))) {
-                return false;
-            }
-            UserPersonalInfo info = new UserPersonalInfo();
-            info.createUserInfoWithEmail(userName, mobileNumber, email, password);
-            Admin a1 = new Admin(info);
-            connection.addAdmin(a1);
-            return true;
-        } else if (type.equals("driver")) {
-            if (mobileNumber.equals(connection.getDriver(mobileNumber))) {
-                return false;
-            }
-            UserPersonalInfo info = new UserPersonalInfo();
-            info.createUserInfoWithEmail(userName, mobileNumber, email, password);
-            Driver d1 = new Driver(info, drivingLicense, nationalID);
-            connection.addDriver(d1);
-            return true;
-
+        if (mobileNumber.equals(connection.getClient(mobileNumber))) {
+            return false;
         }
-        return false;
+        UserPersonalInfo info = new UserPersonalInfo();
+        info.createUserInfoWithEmail(userName, mobileNumber, email, password);
+        Client c1 = new Client(info);
+        connection.addClient(c1);
+        return true;
     }
 
-    public boolean registerAsDriver(String userName, String mobileNumber, String password, String type,
-            DB connection, String drivingLicense, String nationalID) {
-
-        if (type.equals("client")) {
-            if (mobileNumber.equals(connection.getClient(mobileNumber))) {
-                return false;
-            }
-            UserPersonalInfo info = new UserPersonalInfo();
-            info.createUserInfoWithoutEmail(userName, mobileNumber, password);
-            Client c1 = new Client(info);
-            connection.addClient(c1);
-            return true;
-
-        } else if (type.equals("admin")) {
-            if (mobileNumber.equals(connection.getAdmin(mobileNumber))) {
-                return false;
-            }
-            UserPersonalInfo info = new UserPersonalInfo();
-            info.createUserInfoWithoutEmail(userName, mobileNumber, password);
-            Admin a1 = new Admin(info);
-            connection.addAdmin(a1);
-            return true;
-        } else if (type.equals("driver")) {
-            if (mobileNumber.equals(connection.getDriver(mobileNumber))) {
-                return false;
-            }
-            UserPersonalInfo info = new UserPersonalInfo();
-            info.createUserInfoWithoutEmail(userName, mobileNumber, password);
-            Driver d1 = new Driver(info, drivingLicense, nationalID);
-            connection.addDriver(d1);
-            return true;
-
+    public boolean registerAsDriver(UserPersonalInfo info, String drivingLicense, String nationalID) {
+        if (mobileNumber.equals(connection.getDriver(mobileNumber))) {
+            return false;
         }
-        return false;
+        UserPersonalInfo info = new UserPersonalInfo();
+        info.createUserInfoWithoutEmail(userName, mobileNumber, password);
+        Driver d1 = new Driver(info, drivingLicense, nationalID);
+        connection.addDriver(d1);
+        return true;
+
     }
 
     public boolean login(String userName, String password, String type, DB connection) {
