@@ -1,12 +1,7 @@
-
 package arrive_me_there;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Eng.Mohamed
- */
 public class Admin {
 
     private UserPersonalInfo adminPersonalInfo;
@@ -26,7 +21,7 @@ public class Admin {
     public ArrayList<Driver> listPendingDriver() {
         ArrayList<Driver> listDrivers = new ArrayList<>();
         DB db = DB.getInstance();
-        listDrivers= db.getDriverList();
+        listDrivers = db.getDriverList();
         return listDrivers;
     }
 
@@ -37,8 +32,8 @@ public class Admin {
 
     @Override
     public String toString() {
-        return "******* Client Info **********\n"+
-                adminPersonalInfo.toString();
+        return "******* Client Info **********\n"
+                + adminPersonalInfo.toString();
 
     }
 

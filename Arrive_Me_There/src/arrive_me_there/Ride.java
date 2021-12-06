@@ -1,17 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package arrive_me_there;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Dell
- */
 public class Ride {
+
     static int count = 0;
     private int id;
     private String source;
@@ -19,18 +11,18 @@ public class Ride {
     private Client client;
     private boolean isCompleted = false;
     private ArrayList<Offer> offerList;
-    
-    public void Ride(String Source, String Destination, Client client ) {
+
+    public void Ride(String Source, String Destination, Client client) {
         this.source = source;
         this.destination = destination;
         count++;
         id = count;
     }
-    
-    public void setSource(String source){
+
+    public void setSource(String source) {
         this.source = source;
     }
-    
+
     public String getsource() {
         return source;
     }
