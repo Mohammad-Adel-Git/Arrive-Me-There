@@ -53,7 +53,7 @@ public class UserPersonalInfo {
     }
 
     public static UserPersonalInfo createUserInfoWithEmail(String userName, String mobileNumber, String email, String password) {
-        UserPersonalInfo info = new UserPersonalInfo(userName, mobileNumber, password);
+        UserPersonalInfo info = new UserPersonalInfo(userName, mobileNumber, email, password);
         return info;
     }
 
