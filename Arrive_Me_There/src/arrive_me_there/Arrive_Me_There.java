@@ -3,10 +3,7 @@ package arrive_me_there;
 import static java.lang.System.exit;
 import java.util.Scanner;
 
-/**
- *
- * @author Eng.Mohamed
- */
+
 public class Arrive_Me_There {
 
     public static void main(String[] args) {
@@ -33,7 +30,7 @@ public class Arrive_Me_There {
         String userName;
         String password;
         String email;
-       String phoneNumber;
+        String phoneNumber;
         boolean isloggin = false;
         int choice = inp1.nextInt();
         int choice2;
@@ -54,8 +51,9 @@ public class Arrive_Me_There {
                             System.out.print("enter your phone number :");
                             phoneNumber = inp1.next();
                             UserPersonalInfo cl = UserPersonalInfo.createUserInfoWithEmail(userName, phoneNumber, email, password);
-                            if (guy.registerAsClient(cl)){
-                                while (true){
+                            if (guy.registerAsClient(cl)) {
+                                System.out.println("you registered successfully");
+                                while (true) {
                                     System.out.println("1- requset ride\n"
                                             + "2- offers \n"
                                             + "3- finish ride \n"
@@ -78,8 +76,8 @@ public class Arrive_Me_There {
                             System.out.print("enter your national ID :");
                             String nationalID = inp1.next();
                             UserPersonalInfo dr = UserPersonalInfo.createUserInfoWithEmail(userName, phoneNumber, email, password);
-                            if (guy.registerAsDriver(dr, drivingLicense, nationalID)){
-                                while(true){
+                            if (guy.registerAsDriver(dr, drivingLicense, nationalID)) {
+                                while (true) {
                                     System.out.println("1- add favourite areas\n"
                                             + "2- available trips\n"
                                             + "3- show users rate\n"
@@ -121,7 +119,16 @@ public class Arrive_Me_There {
                             System.out.print("enter your password :");
                             password = inp1.next();
 
-                            isloggin = guy.login(userName, password, "admin");
+                            if (guy.login(userName, password, "admin")) {
+                                System.out.println("you logined successfully");
+                                while (true) {
+                                    System.out.println("1- add new admin\n"
+                                            + "2- suspend user\n"
+                                            + "3- list pending Drivers\n"
+                                            + "4- verify Driver\n");
+                                    String adminChoice = inp1.next();
+                                }
+                            }
                             break;
                     }
                     break;
