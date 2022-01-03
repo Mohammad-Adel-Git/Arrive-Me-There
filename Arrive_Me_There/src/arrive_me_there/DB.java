@@ -1,15 +1,18 @@
 package arrive_me_there;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 
 public class DB {
-
+    
     private static DB instance;
     private ArrayList<Client> clientList;
     private ArrayList<Admin> adminList;
     private ArrayList<Driver> driverList;
     private ArrayList<Ride> rideList;
+    private ArrayList<String> discountAreas;
+    private ArrayList<Date> holidayDays;
 
     private DB() {
         clientList = new ArrayList<Client>();
@@ -57,6 +60,19 @@ public class DB {
     public ArrayList<Ride> getRideList() {
         return rideList;
     }
+    
+    public ArrayList<String> getDiscountArea(){
+        return discountAreas;
+    }
+    
+    public void addHolidayDay(Date date){
+        holidayDays.add(date);
+    }
+    
+    public ArrayList<Date> getHolidayDays(){
+        return holidayDays;
+    }
+    
     public Client checkClientExists(String userName, String password){
         for (Client client: clientList)
             if (userName.equals(client.getInfo().getUserName()) &&
@@ -109,13 +125,6 @@ public class DB {
         return null;
 
     }
-    
-//    public Driver getDriver(String mobileNumber) {
-//        for (Driver driver : driverList)
-//            if (driver.getInfo().getMobileNumber() == mobileNumber)
-//                return driver;
-//        return null
-//    }
     
     public Ride getRide (int id){
         for (Ride ride : rideList){

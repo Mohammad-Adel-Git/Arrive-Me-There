@@ -4,7 +4,22 @@ import java.util.ArrayList;
 
 public class Admin {
 
+    DB connection = DB.getInstance();
+    private Event event;
+    ArrayList<String> notificationList;
     private UserPersonalInfo adminPersonalInfo;
+
+    public void addnotification(String notification) {
+        notificationList.add(notification);
+    }
+
+    public void addDiscountArea(String area) {
+        connection.getDiscountArea().add(area);
+    }
+
+    public ArrayList<String> getNotificationList() {
+        return notificationList;
+    }
 
     public Admin(UserPersonalInfo adminPersonalInfo) {
         this.adminPersonalInfo = adminPersonalInfo;
@@ -27,7 +42,7 @@ public class Admin {
 
     public void addNewAdmin(UserPersonalInfo personalInfo) {
         DB db = DB.getInstance();
-        Admin admin=new Admin(personalInfo);
+        Admin admin = new Admin(personalInfo);
         db.addAdmin(admin);
     }
 
